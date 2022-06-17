@@ -19,7 +19,8 @@ RUN apt-get -y update && \
 # Download and install STM32 Cube IDE
 COPY st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh /tmp
 WORKDIR /tmp
-RUN ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
+RUN chmod +x ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
+    && ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
     && rm ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
