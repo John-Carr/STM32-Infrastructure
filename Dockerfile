@@ -14,26 +14,18 @@ ENV PATH="${PATH}:/opt/st/stm32cubeide_${STM32CUBEIDE_VERSION}"
 ARG BUILD="11526_20211125_0815"
 
 RUN apt-get -y update && \
-	apt-get -y install zip curl
-
-RUN apt-get update && \
+    apt-get -y install zip curl && \
+    apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git && \
     apt-get install -y git-lfs
 
+# This is sorta a work around for git lfs. Github actions doesn't clone the git lfs files by default
 RUN git clone https://github.com/John-Carr/STM32-Infrastructure.git
-
-RUN ls -la STM32-Infrastructure
 
 WORKDIR /STM32-Infrastructure
 
-RUN ls -la
-
-RUN head -10 ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
-
 RUN git lfs pull
-
-RUN head -10 ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
 
 RUN chmod +x ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
     && ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
@@ -41,6 +33,8 @@ RUN chmod +x ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
