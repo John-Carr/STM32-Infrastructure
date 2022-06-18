@@ -14,8 +14,3 @@ runs:
   args:
     - ${{ inputs.project-path }}
     - ${{ inputs.project-target }}
-    
-  steps:
-    - uses: actions/checkout@v3
-      with:
-        lfs: true
