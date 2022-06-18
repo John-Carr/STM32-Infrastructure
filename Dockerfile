@@ -23,9 +23,11 @@ RUN apt-get update && \
 
 RUN git clone https://github.com/John-Carr/STM32-Infrastructure.git
 
-RUN ls -la
-
 RUN ls -la STM32-Infrastructure
+
+WORKDIR /STM32-Infrastructure
+
+RUN ls -la
 
 RUN head -10 ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
 
