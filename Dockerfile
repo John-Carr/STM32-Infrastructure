@@ -25,6 +25,8 @@ RUN apt-get update && \
     apt-get install -y git && \
     apt-get install -y git-lfs
 
+RUN ls -la
+
 RUN git lfs pull
 
 RUN head -10 ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
