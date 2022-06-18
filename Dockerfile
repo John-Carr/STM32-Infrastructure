@@ -20,7 +20,7 @@ RUN apt-get -y update && \
 COPY . /tmp
 WORKDIR /tmp
 
-RUN ls
+RUN head -10 ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
 
 RUN chmod +x ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
     && ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
