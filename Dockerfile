@@ -21,7 +21,7 @@ RUN apt-get update && \
     apt-get install -y git && \
     apt-get install -y git-lfs
 
-RUN git clone https://github.com/John-Carr/STM32-Infrastructure.git temp
+RUN git clone https://github.com/John-Carr/STM32-Infrastructure.git /temp
 
 WORKDIR /tmp
 
