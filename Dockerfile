@@ -16,16 +16,14 @@ ARG BUILD="11526_20211125_0815"
 RUN apt-get -y update && \
 	apt-get -y install zip curl
 
-# Download and install STM32 Cube IDE
-COPY . /tmp
-WORKDIR /tmp
-
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y git && \
     apt-get install -y git-lfs
 
-RUN ls -la
+RUN git clone https://github.com/John-Carr/STM32-Infrastructure.git temp
+
+WORKDIR /tmp
 
 RUN git lfs pull
 
