@@ -25,6 +25,8 @@ RUN git clone https://github.com/John-Carr/STM32-Infrastructure.git temp
 
 WORKDIR /tmp
 
+RUN head -10 ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
+
 RUN git lfs pull
 
 RUN head -10 ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
