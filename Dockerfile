@@ -22,7 +22,7 @@ WORKDIR /tmp
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y git \
+    apt-get install -y git && \
     apt-get install -y git-lfs
 
 RUN git lfs pull
