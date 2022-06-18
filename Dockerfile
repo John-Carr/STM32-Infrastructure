@@ -17,8 +17,11 @@ RUN apt-get -y update && \
 	apt-get -y install zip curl
 
 # Download and install STM32 Cube IDE
-COPY st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh /tmp
+COPY . /tmp
 WORKDIR /tmp
+
+RUN git lfs pull
+
 RUN chmod +x ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
     && ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
     && rm ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh
