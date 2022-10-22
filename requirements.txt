@@ -3,3 +3,4 @@ pycryptodomex
 ecdsa
 pyelftools
 numpy
+gdown

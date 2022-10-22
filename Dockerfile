@@ -17,15 +17,13 @@ RUN apt-get -y update && \
     apt-get -y install zip curl && \
     apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y git && \
-    apt-get install -y git-lfs
+    apt-get install -y pip
+
+COPY requirements.txt ./requirements.txt
+RUN pip install -r requirements.txt
 
 # This is sorta a work around for git lfs. Github actions doesn't clone the git lfs files by default
-RUN git clone https://github.com/John-Carr/STM32-Infrastructure.git
-
-WORKDIR /STM32-Infrastructure
-
-RUN git lfs pull
+RUN gdown 196-UdzhZgfUZEKmr5JzYIM6HkaKGH3ln
 
 RUN chmod +x ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
     && ./st-stm32cubeide_${STM32CUBEIDE_VERSION}_${BUILD}_amd64.deb_bundle.sh \
